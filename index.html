@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天美视频官网入口 - 高品质原创视频内容平台 | 精彩视界</title>
+<meta name="description" content="天美视频官网入口，汇聚原创短片、纪录片、综艺与直播内容，为观众提供高品质视听体验，打造有温度的社区。">
+<style>
+  :root{
+    --bg:#0a0b10;
+    --bg2:#101320;
+    --card:#161a2b;
+    --card2:#1d2236;
+    --line:rgba(255,255,255,.08);
+    --text:#eef1f8;
+    --muted:#9aa3bd;
+    --accent:#ff4d6d;
+    --accent2:#7c5cff;
+    --gold:#ffc46b;
+    --radius:18px;
+    --font:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:min(1200px,92%);margin:0 auto}
+  section{position:relative;padding:96px 0}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:16px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);display:inline-block}
+  h2{font-size:clamp(28px,4vw,44px);line-height:1.2;letter-spacing:-.01em}
+  p{color:var(--muted)}
+
+  /* ---------- 顶部导航 ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(10,11,16,.72);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
+    transition:background .3s;
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:20px;letter-spacing:.02em}
+  .logo-mark{
+    width:38px;height:38px;border-radius:11px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:grid;place-items:center;box-shadow:0 8px 22px rgba(255,77,109,.35);
+  }
+  .logo-mark svg{width:20px;height:20px}
+  .logo span small{display:block;font-size:10px;color:var(--muted);font-weight:500;letter-spacing:.2em}
+  nav.links{display:flex;gap:34px;font-size:15px}
+  nav.links a{color:var(--muted);position:relative;padding:6px 0;transition:color .2s}
+  nav.links a:hover{color:var(--text)}
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .28s;border-radius:2px;
+  }
+  nav.links a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;
+    padding:11px 22px;border-radius:999px;cursor:pointer;border:none;
+    transition:transform .2s,box-shadow .2s,background .2s;font-family:inherit;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#fff;box-shadow:0 10px 26px rgba(255,77,109,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,77,109,.45)}
+  .btn-ghost{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line)}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px;transition:.3s}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:80px 0 70px;overflow:hidden;
+    background:
+      radial-gradient(700px 400px at 82% 12%,rgba(124,92,255,.22),transparent 70%),
+      radial-gradient(620px 420px at 8% 88%,rgba(255,77,109,.18),transparent 70%),
+      var(--bg);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .hero h1{font-size:clamp(40px,6.4vw,74px);line-height:1.06;letter-spacing:-.03em;margin-bottom:24px}
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(120deg,var(--accent) 10%,var(--accent2) 55%,var(--gold));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{font-size:18px;max-width:520px;margin-bottom:34px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+  .hero-stats{display:flex;gap:44px;flex-wrap:wrap}
+  .hero-stats .stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-.02em;background:linear-gradient(120deg,#fff,#b9c0da);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-stats .stat span{font-size:13px;color:var(--muted)}
+
+  /* 播放器卡片 */
+  .player-shell{position:relative}
+  .player-card{
+    position:relative;border-radius:26px;overflow:hidden;
+    background:linear-gradient(160deg,#1c2137,#0d1020);
+    border:1px solid var(--line);
+    box-shadow:0 40px 90px rgba(0,0,0,.6);
+    transform:perspective(1200px) rotateY(-6deg) rotateX(3deg);
+    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .player-shell:hover .player-card{transform:perspective(1200px) rotateY(0) rotateX(0)}
+  .player-screen{
+    aspect-ratio:16/10;position:relative;
+    background:
+      radial-gradient(circle at 70% 30%,rgba(255,77,109,.4),transparent 55%),
+      radial-gradient(circle at 25% 75%,rgba(124,92,255,.45),transparent 60%),
+      linear-gradient(150deg,#232a45,#0b0e1a);
+    display:grid;place-items:center;overflow:hidden;
+  }
+  .player-screen::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px);
+    pointer-events:none;
+  }
+  .play-btn{
+    width:82px;height:82px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(255,255,255,.14);backdrop-filter:blur(10px);
+    display:grid;place-items:center;transition:transform .25s,background .25s;
+    box-shadow:0 0 0 0 rgba(255,255,255,.25);
+    animation:pulse 2.4s infinite;
+  }
+  .play-btn:hover{transform:scale(1.08);background:rgba(255,255,255,.24)}
+  .play-btn svg{width:30px;height:30px;margin-left:4px}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.25)}70%{box-shadow:0 0 0 26px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+  .player-bar{padding:16px 20px;display:flex;align-items:center;gap:14px;border-top:1px solid var(--line)}
+  .player-bar .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .player-bar .t{font-size:13px;color:var(--muted);flex:1}
+  .player-bar .now{font-size:13px;color:var(--text);font-weight:600}
+  .floating-tag{
+    position:absolute;right:-14px;bottom:52px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#fff;font-size:12px;font-weight:700;padding:10px 16px;border-radius:999px;
+    box-shadow:0 14px 34px rgba(255,77,109,.45);letter-spacing:.04em;
+  }
+  .floating-tag2{
+    position:absolute;left:-16px;top:34px;
+    background:rgba(22,26,43,.92);backdrop-filter:blur(12px);
+    border:1px solid var(--line);border-radius:14px;padding:12px 16px;
+    font-size:12px;color:var(--text);font-weight:600;
+    box-shadow:0 18px 40px rgba(0,0,0,.5);
+  }
+  .floating-tag2 b{display:block;color:var(--accent);font-size:16px;margin-bottom:2px}
+
+  /* ---------- 品牌 Logo 墙 ---------- */
+  .partners{padding:44px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .partners-row{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .partners-row .label{font-size:13px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .partners-row .brands{display:flex;gap:44px;flex-wrap:wrap;align-items:center}
+  .partners-row .brands span{font-size:17px;font-weight:700;color:rgba(255,255,255,.42);letter-spacing:.04em;transition:color .25s}
+  .partners-row .brands span:hover{color:rgba(255,255,255,.85)}
+
+  /* ---------- 内容矩阵 ---------- */
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:52px}
+  .section-head p{max-width:440px;font-size:16px}
+  .channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .channel{
+    background:linear-gradient(165deg,var(--card),var(--bg2));
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px 28px;position:relative;overflow:hidden;
+    transition:transform .3s,border-color .3s;
+  }
+  .channel::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(340px 200px at 100% 0%,rgba(124,92,255,.22),transparent 65%);
+    opacity:0;transition:opacity .3s;
+  }
+  .channel:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.18)}
+  .channel:hover::before{opacity:1}
+  .channel .ico{
+    width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+    background:rgba(255,77,109,.14);margin-bottom:22px;position:relative;
+  }
+  .channel:nth-child(2) .ico{background:rgba(124,92,255,.16)}
+  .channel:nth-child(3) .ico{background:rgba(255,196,107,.14)}
+  .channel:nth-child(4) .ico{background:rgba(80,220,180,.14)}
+  .channel:nth-child(5) .ico{background:rgba(255,77,109,.14)}
+  .channel:nth-child(6) .ico{background:rgba(124,92,255,.16)}
+  .channel .ico svg{width:26px;height:26px}
+  .channel h3{font-size:19px;margin-bottom:10px;position:relative}
+  .channel p{font-size:14.5px;line-height:1.75;position:relative}
+  .channel .meta{display:flex;gap:18px;margin-top:20px;font-size:12.5px;color:var(--muted);position:relative}
+  .channel .meta b{color:var(--accent);font-weight:700}
+
+  /* ---------- 精选内容 ---------- */
+  .showcase{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .vcard{
+    border-radius:16px;overflow:hidden;background:var(--card);
+    border:1px solid var(--line);transition:transform .3s,border-color .3s;cursor:pointer;
+  }
+  .vcard:hover{transform:translateY(-6px);border-color:rgba(255,77,109,.4)}
+  .vthumb{aspect-ratio:16/10;position:relative;display:grid;place-items:center;overflow:hidden}
+  .vthumb.g1{background:radial-gradient(circle at 30% 30%,#ff4d6d,#7c2d4f)}
+  .vthumb.g2{background:radial-gradient(circle at 70% 30%,#7c5cff,#2a2160)}
+  .vthumb.g3{background:radial-gradient(circle at 40% 70%,#ffc46b,#7a4c14)}
+  .vthumb.g4{background:radial-gradient(circle at 60% 40%,#4dd7b8,#12463c)}
+  .vthumb::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55));
+  }
+  .vthumb .tag{
+    position:absolute;top:12px;left:12px;z-index:2;
+    font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;
+    background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;letter-spacing:.04em;
+  }
+  .vthumb .mini-play{
+    position:relative;z-index:2;width:46px;height:46px;border-radius:50%;
+    background:rgba(255,255,255,.22);backdrop-filter:blur(6px);
+    display:grid;place-items:center;transition:transform .25s;
+  }
+  .vcard:hover .mini-play{transform:scale(1.12)}
+  .vthumb .mini-play svg{width:16px;height:16px;margin-left:2px}
+  .vbody{padding:16px 16px 20px}
+  .vbody h4{font-size:15.5px;margin-bottom:6px;line-height:1.4}
+  .vbody .desc{font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:10px}
+  .vbody .desc .views{white-space:nowrap}
+
+  /* ---------- 数据区 ---------- */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .metric{
+    text-align:center;padding:38px 20px;border-radius:var(--radius);
+    background:linear-gradient(165deg,var(--card),var(--bg2));
+    border:1px solid var(--line);position:relative;overflow:hidden;
+  }
+  .metric::after{
+    content:"";position:absolute;left:0;right:0;top:0;height:3px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    transform:scaleX(0);transition:transform .4s;transform-origin:left;
+  }
+  .metric:hover::after{transform:scaleX(1)}
+  .metric b{display:block;font-size:clamp(30px,3.6vw,42px);font-weight:800;letter-spacing:-.02em;
+    background:linear-gradient(120deg,#fff,#a8b0cd);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .metric span{font-size:13.5px;color:var(--muted);letter-spacing:.04em}
+
+  /* ---------- 关于 ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .about-visual{
+    position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;
+    background:
+      radial-gradient(circle at 25% 25%,rgba(255,77,109,.35),transparent 55%),
+      radial-gradient(circle at 80% 75%,rgba(124,92,255,.4),transparent 60%),
+      linear-gradient(150deg,#1a1f33,#0a0d18);
+    border:1px solid var(--line);
+  }
+  .about-visual .grid-lines{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:44px 44px;
+  }
+  .about-visual .center-badge{
+    position:absolute;inset:0;display:grid;place-items:center;
+  }
+  .about-visual .center-badge .ring{
+    width:150px;height:150px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;
+    position:relative;
+  }
+  .about-visual .center-badge .ring::before{
+    content:"";position:absolute;inset:-24px;border-radius:50%;
+    border:1px dashed rgba(255,255,255,.12);animation:spin 22s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .about-visual .center-badge .core{
+    width:86px;height:86px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:grid;place-items:center;box-shadow:0 0 50px rgba(255,77,109,.5);
+  }
+  .about-visual .center-badge .core svg{width:34px;height:34px}
+  .about-list{list-style:none;margin-top:30px;display:grid;gap:18px}
+  .about-list li{display:flex;gap:14px;align-items:flex-start;font-size:15px;color:var(--muted)}
+  .about-list .tick{
+    flex:0 0 auto;width:22px;height:22px;border-radius:7px;margin-top:2px;
+    background:rgba(255,77,109,.16);display:grid;place-items:center;
+  }
+  .about-list .tick svg{width:12px;height:12px}
+  .about-list b{color:var(--text)}
+
+  /* ---------- 社区 ---------- */
+  .community{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:14px}
+  .topic{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px;transition:transform .3s,border-color .3s;
+  }
+  .topic:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.4)}
+  .topic .top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .avatar{
+    width:38px;height:38px;border-radius:50%;flex:0 0 auto;
+    display:grid;place-items:center;font-weight:700;font-size:14px;color:#fff;
+  }
+  .a1{background:linear-gradient(135deg,#ff4d6d,#ff8a5c)}
+  .a2{background:linear-gradient(135deg,#7c5cff,#4db8ff)}
+  .a3{background:linear-gradient(135deg,#ffc46b,#ff7a45)}
+  .topic .top .name{font-size:14px;font-weight:600}
+  .topic .top .time{font-size:12px;color:var(--muted)}
+  .topic p{font-size:14px;line-height:1.7;color:#c3cade}
+  .topic .foot{display:flex;gap:18px;margin-top:16px;font-size:12.5px;color:var(--muted)}
+  .topic .foot span{display:flex;align-items:center;gap:5px}
+  .topic .foot svg{width:13px;height:13px;opacity:.7}
+
+  /* ---------- 下载入口 ---------- */
+  .cta-band{
+    margin:0 auto;width:min(1200px,92%);
+    border-radius:28px;padding:66px 60px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(600px 300px at 85% 20%,rgba(255,196,107,.25),transparent 65%),
+      radial-gradient(500px 320px at 10% 90%,rgba(124,92,255,.35),transparent 65%),
+      linear-gradient(135deg,#1f1730,#12162a);
+    border:1px solid rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
+  }
+  .cta-band h2{max-width:560px;font-size:clamp(26px,3.4vw,40px)}
+  .cta-band p{margin-top:12px;max-width:520px}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .qr-box{
+    width:118px;height:118px;border-radius:16px;background:#fff;padding:9px;
+    box-shadow:0 22px 50px rgba(0,0,0,.45);
+  }
+  .qr-box svg{width:100%;height:100%}
+
+  /* ---------- 页脚 ---------- */
+  footer{padding:74px 0 34px;border-top:1px solid var(--line);margin-top:96px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:52px}
+  .foot-brand p{font-size:14px;max-width:300px;margin-top:18px}
+  .foot-col h5{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+  .foot-col a{display:block;font-size:14px;color:var(--muted);padding:5px 0;transition:color .2s}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-bottom{
+    border-top:1px solid var(--line);padding-top:26px;
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-size:13px;color:var(--muted);
+  }
+  .foot-bottom .socials{display:flex;gap:16px}
+  .foot-bottom .socials a{transition:color .2s}
+  .foot-bottom .socials a:hover{color:var(--accent)}
+
+  /* ---------- 响应式 ---------- */
+  @media (max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;gap:56px}
+    .player-card{transform:none}
+    .channel-grid{grid-template-columns:repeat(2,1fr)}
+    .video-grid{grid-template-columns:repeat(2,1fr)}
+    .about-grid{grid-template-columns:1fr;gap:44px}
+    .topic-grid{grid-template-columns:1fr}
+    .metrics{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
+    nav.links{display:none}
+    .burger{display:block}
+    nav.links.open{
+      display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;
+      background:rgba(12,14,22,.98);padding:24px 6%;gap:18px;border-bottom:1px solid var(--line);
+    }
+  }
+  @media (max-width:640px){
+    section{padding:68px 0}
+    .channel-grid{grid-template-columns:1fr}
+    .video-grid{grid-template-columns:1fr}
+    .hero-stats{gap:28px}
+    .cta-band{padding:44px 28px}
+    .foot-grid{grid-template-columns:1fr}
+    .nav-cta .btn-ghost{display:none}
+    .partners-row{gap:18px}
+    .partners-row .brands{gap:24px}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav">
+    <a href="#" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg>
+      </span>
+      <span>天美视频<small>TIANMEI VIDEO</small></span>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#channels">内容频道</a>
+      <a href="#showcase">精选作品</a>
+      <a href="#about">关于我们</a>
+      <a href="#community">社区</a>
+      <a href="#download">下载入口</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="btn btn-ghost" onclick="scrollToId('download')">登录</button>
+      <button class="btn btn-primary" onclick="scrollToId('download')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        官网入口
+      </button>
+      <button class="burger" id="burger" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">TIANMEI VIDEO · 官方网站</div>
+      <h1>天美视频<br><em>让每一帧</em>都有温度</h1>
+      <p class="lead">天美视频官网入口，聚合原创短片、纪实影像、综艺直播与创作者社区。我们相信好内容值得被认真对待，也值得被更多人看见。</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="scrollToId('download')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg>
+          立即观看
+        </button>
+        <button class="btn btn-ghost" onclick="scrollToId('showcase')">
+          浏览精选作品
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>2.8 亿</b><span>累计播放量</span></div>
+        <div class="stat"><b>12,600+</b><span>签约创作者</span></div>
+        <div class="stat"><b>98.4%</b><span>用户好评率</span></div>
+      </div>
+    </div>
+    <div class="player-shell">
+      <div class="player-card">
+        <div class="player-screen">
+          <button class="play-btn" aria-label="播放">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+        <div class="player-bar">
+          <span class="dot"></span>
+          <span class="t">正在热播 · 原创纪录短片</span>
+          <span class="now">《城市之光》</span>
+        </div>
+      </div>
+      <div class="floating-tag">4K 超清 · 全网首发</div>
+      <div class="floating-tag2"><b>86 万+</b>今日新增观看</div>
+    </div>
+  </div>
+</section>
+
+<!-- 合作品牌 -->
+<div class="partners">
+  <div class="wrap partners-row">
+    <span class="label">内容合作伙伴</span>
+    <div class="brands">
+      <span>光影工作室</span>
+      <span>星河传媒</span>
+      <span>新纪影像</span>
+      <span>蓝海视听</span>
+      <span>潮汐文化</span>
+      <span>南岸影业</span>
+    </div>
+  </div>
+</div>
+
+<!-- 内容频道 -->
+<section id="channels">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">CONTENT MATRIX</div>
+        <h2>六大内容频道<br>覆盖你的每一种观看心情</h2>
+      </div>
+      <p>从几分钟的短日志到长达数小时的深度纪实，天美视频用多元化内容矩阵，陪伴你生活中的每一个片段。</p>
+    </div>
+    <div class="channel-grid">
+      <div class="channel">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="#ff4d6d" stroke-width="1.8"/><path d="M9.5 9.5v5l4-2.5-4-2.5z" fill="#ff4d6d"/></svg>
+        </div>
+        <h3>原创短片</h3>
+        <p>由天美视频出品团队与签约导演共同打造的原创剧情短片，聚焦都市、情感与成长议题，每一部都值得反复回味。</p>
+        <div class="meta"><span><b>1,280</b> 部</span><span>更新：每日</span></div>
+      </div>
+      <div class="channel">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#7c5cff" stroke-width="1.8"/><path d="M12 8v4l3 2" stroke="#7c5cff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>深度纪实</h3>
+        <p>用镜头记录真实世界的温度与力量。从城市街角到遥远村落，纪录片团队用长期主义的态度打磨每一个故事。</p>
+        <div class="meta"><span><b>460</b> 部</span><span>更新：每周</span></div>
+      </div>
+      <div class="channel">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.3 5.8.8-4.2 4.1 1 5.8L12 16.2 6.9 19l1-5.8L3.7 9.1l5.8-.8L12 3z" stroke="#ffc46b" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>综艺娱乐</h3>
+        <p>轻松有趣的原创综艺与直播互动节目，用笑声连接屏幕两端的你我。每周固定档期，陪你度过下班后的惬意时光。</p>
+        <div class="meta"><span><b>92</b> 档</span><span>更新：每周更新</span></div>
+      </div>
+      <div class="channel">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 18V9m5 9V5m5 13v-7m5 7V7" stroke="#4dd7b8" stroke-width="1.9" stroke-linecap="round"/></svg>
+        </div>
+        <h3>知识科普</h3>
+        <p>用视频讲清楚一件复杂的事。天美视频联合各领域专业人士，把晦涩的知识拆解成清晰、生动、易于理解的画面。</p>
+        <div class="meta"><span><b>860</b> 集</span><span>更新：每日</span></div>
+      </div>
+      <div class="channel">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a4.5 4.5 0 018-2.8A4.5 4.5 0 0119 11c0 5.4-7 10-7 10z" stroke="#ff4d6d" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>生活美学</h3>
+        <p>美食、旅行、家居、手工——关于生活的一切美好细节。慢下来，和天美视频一起发现日常里的不确定惊喜。</p>
+        <div class="meta"><span><b>2,340</b> 条</span><span>更新：每日</span></div>
+      </div>
+      <div class="channel">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3.2" stroke="#7c5cff" stroke-width="1.8"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="#7c5cff" stroke-width="1.8" stroke-linecap="round"/><path d="M16 6.5a3 3 0 010 5.8M17.5 19c0-2.2-.8-3.9-2-5" stroke="#7c5cff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>创作者社区</h3>
+        <p>为每一位热爱影像的人提供展示与成长的舞台。开放投稿、创作激励、线下沙龙，让好作品与好观众彼此遇见。</p>
+        <div class="meta"><span><b>12,600+</b> 位</span><span>持续开放</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 精选作品 -->
+<section id="showcase" class="showcase">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">FEATURED WORKS</div>
+        <h2>本周精选 · 编辑推荐</h2>
+      </div>
+      <p>由天美视频内容团队每周精选，覆盖纪录、剧情、生活与知识四大方向，总有一部适合此刻的你。</p>
+    </div>
+    <div class="video-grid">
+      <div class="vcard">
+        <div class="vthumb g1">
+          <span class="tag">原创首发</span>
+          <div class="mini-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg></div>
+        </div>
+        <div class="vbody">
+          <h4>《城市之光》：凌晨四点的守夜人</h4>
+          <div class="desc"><span>纪实 · 32 分钟</span><span class="views">186.2 万播放</span></div>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vthumb g2">
+          <span class="tag">剧情短片</span>
+          <div class="mini-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg></div>
+        </div>
+        <div class="vbody">
+          <h4>《回声》：关于一封未寄出的信</h4>
+          <div class="desc"><span>剧情 · 18 分钟</span><span class="views">94.7 万播放</span></div>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vthumb g3">
+          <span class="tag">生活美学</span>
+          <div class="mini-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg></div>
+        </div>
+        <div class="vbody">
+          <h4>《一日三餐》：巷子里的家常味道</h4>
+          <div class="desc"><span>美食 · 24 分钟</span><span class="views">152.9 万播放</span></div>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vthumb g4">
+          <span class="tag">知识科普</span>
+          <div class="mini-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg></div>
+        </div>
+        <div class="vbody">
+          <h4>《镜头语言》：电影是怎么讲故事的</h4>
+          <div class="desc"><span>科普 · 15 分钟</span><span class="views">73.4 万播放</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数据 -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">BY THE NUMBERS</div>
+        <h2>被更多人看见的坚持</h2>
+      </div>
+      <p>天美视频始终把内容质量放在第一位。这些数字背后，是团队与创作者日复一日的投入与打磨。</p>
+    </div>
+    <div class="metrics">
+      <div class="metric"><b>2.8 亿</b><span>累计视频播放量</span></div>
+      <div class="metric"><b>5,600+</b><span>原创作品数量</span></div>
+      <div class="metric"><b>1,200 万</b><span>注册用户规模</span></div>
+      <div class="metric"><b>36 个</b><span>内容创作奖项</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 关于 -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-visual">
+      <div class="grid-lines"></div>
+      <div class="center-badge">
+        <div class="ring">
+          <div class="core">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">ABOUT TIANMEI</div>
+      <h2>做有温度的视频平台</h2>
+      <p style="margin-top:18px;font-size:16px">天美视频成立于一个简单的想法：让人与人之间，因为一段影像而产生真实的连接。我们不追逐流量的短期喧嚣，而是把资源投向真正值得被记录的故事与创作者。</p>
+      <ul class="about-list">
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#ff4d6d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>内容为本：</b>建立严格的选题与审核机制，为好作品留出足够的创作空间。</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#ff4d6d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>创作者优先：</b>提供分成激励、设备支持与培训计划，帮助创作者持续成长。</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#ff4d6d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>技术驱动：</b>自适应码率、4K 超清与低延迟直播能力，保证每一帧的观看体验。</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#ff4d6d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>社区共建：</b>弹幕、评论与话题小组，让观众也成为内容生态的一部分。</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 社区 -->
+<section id="community" class="community">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">COMMUNITY</div>
+        <h2>社区正在发生的事</h2>
+      </div>
+      <p>在话题小组里，观众与创作者交换观点、分享幕后，让每一次观看都延续为一场对话。</p>
+    </div>
+    <div class="topic-grid">
+      <div class="topic">
+        <div class="top">
+          <span class="avatar a1">林</span>
+          <div><div class="name">林川的影像笔记</div><div class="time">2 小时前</div></div>
+        </div>
+        <p>刚看完《城市之光》，凌晨的街道被拍得好温柔。想问问导演，那段长镜头是实拍还是拼接的？</p>
+        <div class="foot"><span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a4.5 4.5 0 018-2.8A4.5 4.5 0 0119 11c0 5.4-7 10-7 10z" stroke="currentColor" stroke-width="1.8"/></svg>1,284 赞</span><span>236 条回复</span></div>
+      </div>
+      <div class="topic">
+        <div class="top">
+          <span class="avatar a2">王</span>
+          <div><div class="name">王一的创作现场</div><div class="time">5 小时前</div></div>
+        </div>
+        <p>这周在整理拍摄素材，分享一些手持拍摄稳定性的小技巧，欢迎来话题小组一起交流。</p>
+        <div class="foot"><span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a4.5 4.5 0 018-2.8A4.5 4.5 0 0119 11c0 5.4-7 10-7 10z" stroke="currentColor" stroke-width="1.8"/></svg>862 赞</span><span>118 条回复</span></div>
+      </div>
+      <div class="topic">
+        <div class="top">
+          <span class="avatar a3">陈</span>
+          <div><div class="name">陈默的观影记录</div><div class="time">1 天前</div></div>
+        </div>
+        <p>重新看了一遍《回声》，第二次注意到很多第一次忽略的细节。好作品经得起反复观看。</p>
+        <div class="foot"><span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a4.5 4.5 0 018-2.8A4.5 4.5 0 0119 11c0 5.4-7 10-7 10z" stroke="currentColor" stroke-width="1.8"/></svg>1,976 赞</span><span>342 条回复</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 下载入口 CTA -->
+<section id="download" style="padding-bottom:0">
+  <div class="cta-band">
+    <div>
+      <div class="eyebrow" style="color:var(--gold)">GET STARTED</div>
+      <h2>从天美视频官网入口，<br>开始你的下一段观看旅程</h2>
+      <p>支持网页端、移动 App 与大屏端同步观看。扫描二维码或点击按钮，立即进入天美视频官网，发现属于你的精彩内容。</p>
+      <div class="cta-actions" style="margin-top:28px">
+        <button class="btn btn-primary" onclick="location.href='#'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg>
+          进入官网入口
+        </button>
+        <button class="btn btn-ghost" onclick="location.href='#'">下载移动客户端</button>
+      </div>
+    </div>
+    <div class="qr-box" aria-label="扫描二维码">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" fill="#fff"/>
+        <g fill="#0a0b10">
+          <rect x="6" y="6" width="22" height="22"/><rect x="11" y="11" width="12" height="12" fill="#fff"/><rect x="14" y="14" width="6" height="6" fill="#0a0b10"/>
+          <rect x="72" y="6" width="22" height="22"/><rect x="77" y="11" width="12" height="12" fill="#fff"/><rect x="80" y="14" width="6" height="6" fill="#0a0b10"/>
+          <rect x="6" y="72" width="22" height="22"/><rect x="11" y="77" width="12" height="12" fill="#fff"/><rect x="14" y="80" width="6" height="6" fill="#0a0b10"/>
+          <rect x="36" y="8" width="5" height="5"/><rect x="46" y="8" width="5" height="5"/><rect x="56" y="8" width="5" height="5"/>
+          <rect x="36" y="18" width="5" height="5"/><rect x="51" y="18" width="5" height="5"/>
+          <rect x="41" y="28" width="5" height="5"/><rect x="56" y="28" width="5" height="5"/>
+          <rect x="8" y="36" width="5" height="5"/><rect x="18" y="36" width="5" height="5"/><rect x="28" y="36" width="5" height="5"/>
+          <rect x="13" y="46" width="5" height="5"/><rect x="23" y="46" width="5" height="5"/>
+          <rect x="8" y="56" width="5" height="5"/><rect x="18" y="56" width="5" height="5"/><rect x="28" y="56" width="5" height="5"/>
+          <rect x="36" y="36" width="5" height="5"/><rect x="46" y="36" width="5" height="5"/><rect x="56" y="36" width="5" height="5"/><rect x="66" y="36" width="5" height="5"/><rect x="82" y="36" width="5" height="5"/>
+          <rect x="41" y="46" width="5" height="5"/><rect x="56" y="46" width="5" height="5"/><rect x="72" y="46" width="5" height="5"/><rect x="88" y="46" width="5" height="5"/>
+          <rect x="36" y="56" width="5" height="5"/><rect x="51" y="56" width="5" height="5"/><rect x="66" y="56" width="5" height="5"/><rect x="82" y="56" width="5" height="5"/>
+          <rect x="36" y="66" width="5" height="5"/><rect x="46" y="66" width="5" height="5"/><rect x="61" y="66" width="5" height="5"/><rect x="76" y="66" width="5" height="5"/>
+          <rect x="41" y="76" width="5" height="5"/><rect x="56" y="76" width="5" height="5"/><rect x="71" y="76" width="5" height="5"/><rect x="86" y="76" width="5" height="5"/>
+          <rect x="36" y="86" width="5" height="5"/><rect x="51" y="86" width="5" height="5"/><rect x="66" y="86" width="5" height="5"/><rect x="81" y="86" width="5" height="5"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg>
+          </span>
+          <span>天美视频<small>TIANMEI VIDEO</small></span>
+        </a>
+        <p>天美视频官网入口，汇聚原创影像与真实故事。我们相信，好的内容能够跨越屏幕，抵达人心。</p>
+      </div>
+      <div class="foot-col">
+        <h5>内容</h5>
+        <a href="#channels">原创短片</a>
+        <a href="#channels">深度纪实</a>
+        <a href="#channels">综艺娱乐</a>
+        <a href="#channels">知识科普</a>
+        <a href="#channels">生活美学</a>
+      </div>
+      <div class="foot-col">
+        <h5>关于</h5>
+        <a href="#about">品牌介绍</a>
+        <a href="#about">团队与愿景</a>
+        <a href="#community">创作者计划</a>
+        <a href="#showcase">精选作品</a>
+      </div>
+      <div class="foot-col">
+        <h5>支持</h5>
+        <a href="#download">官网入口</a>
+        <a href="#download">客户端下载</a>
+        <a href="#community">社区规范</a>
+        <a href="#community">联系我们</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2024 天美视频 TIANMEI VIDEO · 保留所有权利</span>
+      <div class="socials">
+        <a href="#">微博</a>
+        <a href="#">公众号</a>
+        <a href="#">哔哩哔哩</a>
+        <a href="#">小红书</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动
+  function scrollToId(id){
+    var el = document.getElementById(id);
+    if(el){
+      var top = el.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({top: top, behavior:'smooth'});
+    }
+  }
+
+  // 移动端菜单
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  if(burger){
+    burger.addEventListener('click', function(){
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ navLinks.classList.remove('open'); });
+    });
+  }
+
+  // 滚动时 header 背景变化
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 20){
+      header.style.background = 'rgba(10,11,16,.92)';
+    } else {
+      header.style.background = 'rgba(10,11,16,.72)';
+    }
+  });
+
+  // 数字滚动计数
+  var metrics = document.querySelectorAll('.metric b');
+  var counted = false;
+  function animateMetrics(){
+    if(counted) return;
+    var trigger = document.querySelector('.metrics');
+    if(!trigger) return;
+    var rect = trigger.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 80){
+      counted = true;
+      metrics.forEach(function(el){
+        var text = el.textContent;
+        var num = parseFloat(text.replace(/[^\d.]/g, ''));
+        if(isNaN(num)) return;
+        var suffix = text.replace(/[\d.]/g, '');
+        var start = 0;
+        var duration = 1400;
+        var startTime = null;
+        function step(ts){
+          if(!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = num * eased;
+          var display = num % 1 === 0 ? Math.floor(current) : current.toFixed(1);
+          el.textContent = display + suffix;
+          if(progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  }
+  window.addEventListener('scroll', animateMetrics);
+  window.addEventListener('load', animateMetrics);
+</script>
+</body>
+                                                                                                </html>
